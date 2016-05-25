@@ -26,3 +26,14 @@ User.create!(name:  "Example User",
                activated_at: Time.zone.now)
   puts "User ##{n+1} created."
 end
+puts "Creating Users completed."
+
+users = User.order(:created_at).take(6)
+35.times do |n|
+  title =   Faker::Book.title
+  content = Faker::Lorem.sentence(5)
+  price =   Faker::Commerce.price
+  users.each { |user| user.posts.create!(title: title, content: content, price: price) }
+  puts "Post ##{n+1} created."
+end
+puts "Creating Posts completed."
