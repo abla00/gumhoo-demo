@@ -22,7 +22,7 @@ class PostsController < ApplicationController
   private
 
     def post_params
-      params.require(:post).permit(:title, :content, :price, :currency)
+      params.require(:post).permit(:title, :content, :price, :currency, :picture)
     end
     
     def correct_user
