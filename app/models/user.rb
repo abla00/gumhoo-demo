@@ -102,6 +102,10 @@ class User < ActiveRecord::Base
     following.include?(other_user)
   end
   
+  def first_name
+    name.split.first
+  end
+  
   private
   
     # Converts email to all lower-case.
