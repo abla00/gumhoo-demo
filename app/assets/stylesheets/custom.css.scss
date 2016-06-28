@@ -11,6 +11,12 @@ $gray-medium-light: #eaeaea;
   box-sizing:         border-box;
 }
 
+@mixin backface_visibility {
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility:    hidden;
+  backface-visibility:         hidden;
+}
+
 /* universal */
 
 body {
@@ -30,6 +36,14 @@ textarea {
   h1 {
     margin-bottom: 10px;
   }
+}
+
+.row-space-1 {
+  margin-bottom: 6.25px;
+}
+
+.row-space-2 {
+    margin-bottom: 12.5px;
 }
 
 /* typography */
@@ -59,6 +73,11 @@ p {
   line-height: 1.7em;
 }
 
+.text-muted {
+  &:hover {
+    color: #777777;
+  }
+}
 
 /* header */
 
@@ -141,16 +160,7 @@ aside {
   }
 }
 
-.gravatar {
-  float: left;
-  margin-right: 10px;
-}
-
-.gravatar_edit {
-  margin-top: 15px;
-}
-
-.gravatar {
+.img-circle {
   float: left;
   margin-right: 10px;
 }
@@ -206,6 +216,10 @@ input, textarea, select, .uneditable-input {
   @include box_sizing;
 }
 
+input, textarea, select, button {
+  border-radius: 2px !important;
+}
+
 input {
   height: auto !important;
 }
@@ -259,28 +273,43 @@ input {
   li {
     padding: 10px 0;
     border-top: 1px solid #e8e8e8;
-  }
-  .user {
-    margin-top: 5em;
-    padding-top: 0;
-  }
-  .content {
-    display: block;
-    margin-left: 60px;
-    img {
-      display: block;
-      padding: 5px 0;
+    .avatar-wrapper {
+      float: right;
+      .media-photo {
+        position: relative;
+        display: inline-block;
+        vertical-align: bottom;
+        overflow: hidden;
+        @include backface_visibility;
+      }
     }
   }
-  .timestamp {
-    color: $gray-light;
-    display: block;
-    margin-left: 60px;
+  .content {
+    position: relative;
+    .title {
+      color: $gray-darker;
+      display: inline;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .price {
+      background-color: #2d2d2d;
+      color: #fff;
+      float: right;
+      padding: 7px 10px;
+    }
+    img {
+      display: block;
+      margin: 0 0 10px;
+    }
   }
-  .gravatar {
+  .date {
+    display: block;
+    font-size: 13px;
+  }
+  .img-circle {
     float: left;
-    margin-right: 10px;
-    margin-top: 5px;
+    margin: 5px 0 0 0;
   }
 }
 

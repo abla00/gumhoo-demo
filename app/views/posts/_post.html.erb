@@ -1,15 +1,33 @@
-<li id="post-<%= post.id %>">
-  <%= link_to gravatar_for(post.user, size: 50), post.user %>
-  <span class="user"><%= link_to post.user.name, post.user %></span>
-  <span class="content">
-    <%= post.content %>
-    <%= image_tag post.picture.url if post.picture? %>
-  </span>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(post.created_at) %> ago.
-    <% if current_user?(post.user) %>
-      <%= link_to "delete", post, method: :delete,
-                                  data: { confirm: "You sure?" } %>
-    <% end %>
-  </span>
+<li id="post-<%= post.id %>" class="row">
+  <div class="col-md-2 col-sm-12">
+    <div class="avatar-wrapper">
+      <%= link_to(post.user, class: "text-muted") do %>
+        <div class="media-photo row-space-1">
+          <%= gravatar_for(post.user, size: 68) %>
+        </div>
+        <div class="text-center profile-name text-wrap">
+          <%= post.user.first_name %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-md-10 col-sm-12">
+    <div class="row-space-2">
+      <div class="content row-space-2">
+        <%= image_tag post.picture.url if post.picture? %>
+        <%= link_to(post.user) do %>
+          <h3 class="title"><%= post.title %></h3>
+          <span class="price">$<%= post.price %><sup><%= post.currency %></sup></span>
+        <% end %>
+        <p><%= post.content %></p>
+      </div>
+      <div class="text-muted date hide-sm pull-left">
+        Posted <%= time_ago_in_words(post.created_at) %> ago.
+        <% if current_user?(post.user) %>
+          <%= link_to "delete", post, method: :delete,
+                                      data: { confirm: "You sure?" } %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </li>
