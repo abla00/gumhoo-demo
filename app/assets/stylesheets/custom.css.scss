@@ -20,7 +20,7 @@ $gray-medium-light: #eaeaea;
 /* universal */
 
 body {
-  padding-top: 60px;
+  padding-top: 51px;
 }
 
 section {
@@ -39,11 +39,36 @@ textarea {
 }
 
 .row-space-1 {
-  margin-bottom: 6.25px;
+  margin-bottom: 6.25px !important;
 }
 
 .row-space-2 {
-    margin-bottom: 12.5px;
+  margin-bottom: 12.5px !important;
+}
+
+.row-space-6 {
+  margin-bottom: 48px !important;
+}
+
+.padding-0 {
+  padding: 0;
+}
+
+.pb-4 {
+  padding-bottom: 24px !important;
+}
+
+.py-5 {
+  padding-top: 36px !important;
+  padding-bottom: 36px !important;
+}
+
+.pt-6 {
+  padding-top: 48px !important;
+}
+
+.shade-gray {
+  background-color: #f5f5f5 !important;
 }
 
 /* typography */
@@ -53,14 +78,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 3em;
   letter-spacing: -2px;
   margin-bottom: 30px;
   text-align: center;
 }
 
 h2 {
-  font-size: 1.2em;
   letter-spacing: -1px;
   margin-bottom: 30px;
   text-align: center;
