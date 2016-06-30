@@ -7,7 +7,8 @@ class PostTest < ActiveSupport::TestCase
     # This code is not idiomatically correct.
     @post = @user.posts.build(title:    "My post",
                               content:  "Lorem ipsum",
-                              price:    10)
+                              price:    10,
+                              link:     "https://tw.yahoo.com")
   end
 
   test "should be valid" do

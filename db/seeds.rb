@@ -33,7 +33,8 @@ users = User.order(:created_at).take(6)
   title =   Faker::Book.title
   content = Faker::Lorem.sentence(5)
   price =   Faker::Commerce.price
-  users.each { |user| user.posts.create!(title: title, content: content, price: price) }
+  link =    Faker::Internet.url('24h.pchome.com.tw')
+  users.each { |user| user.posts.create!(title: title, content: content, price: price, link: link) }
   puts "Post ##{n+1} created."
 end
 puts "Creating Posts completed."
