@@ -1,7 +1,8 @@
 module StaticPagesHelper
   
   # Except front page return "container-fluid", others return "container"
-  def container_class
-    (action_name == 'home' && !logged_in?) ? 'container-fluid' : 'container'
+  def container_class(container)
+    return 'container' if container.blank?
+    return 'container-fluid'
   end
 end
