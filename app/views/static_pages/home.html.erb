@@ -1,5 +1,6 @@
 <% if logged_in? %>
   <%= render 'static_pages/user_feed' %>
 <% else %>
+  <% provide(:container, "fluid") %>
   <%= render 'static_pages/welcome' %>
 <% end %>
