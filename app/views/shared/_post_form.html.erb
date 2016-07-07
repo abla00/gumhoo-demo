@@ -1,20 +1,17 @@
-<%= form_for(@post, html: { multipart: true }) do |f| %>
+<%= form_for @post do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   
-  <%= f.label :link %>
-  <%= f.text_field :link, class: 'form-control' %>
+  <%= f.hidden_field :picture, value: post_image(@doc) %>
+  <%= f.hidden_field :link,    value: post_url %>
   
   <%= f.label :title %>
-  <%= f.text_field :title, class: 'form-control' %>
-  
-  <%= f.label :content %>
-  <%= f.text_area :content, placeholder: "Compose new post..." %>
+  <%= f.text_field :title, class: 'form-control', value: post_title(@doc) %>
   
   <%= f.label :price %>
-  <%= f.text_field :price, class: 'form-control' %>
+  <%= f.text_field :price, class: 'form-control', value: post_price(@doc) %>
+  
+  <%= f.label :content %>
+  <%= f.text_area :content, class: 'form-control', rows: 5 %>
   
   <%= f.submit "Post", class: "btn btn-primary" %>
-  <span class="picture">
-    <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
-  </span>
 <% end %>

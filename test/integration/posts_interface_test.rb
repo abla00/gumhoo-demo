@@ -10,22 +10,28 @@ class PostsInterfaceTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     get root_path
     assert_select 'div.pagination'
-    assert_select 'input[type=file]'
+    assert_select 'input[type=text]'
     # Invalid submission
+    link = "http://books.com.tw/products/F013709987"
     assert_no_difference 'Post.count' do
-      post posts_path, post: { title: "", content: "", price: nil }
+      post posts_path, post: { title:   "",
+                               content: "",
+                               price:   nil,
+                               picture: "",
+                               link:    link }
     end
     assert_select 'div#error_explanation'
     # Valid submission
     title   = "Valid title"
     content = "This post really ties the room together"
     price   = 10
-    picture = fixture_file_upload('test/fixtures/rails.png', 'image/png')
+    picture = "https://robohash.org/my-own-slug.jpg?size=300x300"
     assert_difference 'Post.count', 1 do
       post posts_path, post: { title:   title,
                                content: content,
                                price:   price,
-                               picture: picture }
+                               picture: picture,
+                               link:    link}
     end
     foo = assigns(:post)
     assert foo.picture?
