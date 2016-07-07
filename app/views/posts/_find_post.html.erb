@@ -1,0 +1,5 @@
+<%= form_tag("/posts/find", method: "get") do %>
+  <%= label_tag(:link, "Link") %>
+  <%= text_field_tag :link, nil, class: "form-control" %>
+  <%= submit_tag("Next", class: "btn btn-primary") %>
+<% end %>

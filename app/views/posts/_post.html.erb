@@ -14,7 +14,11 @@
   <div class="col-md-10 col-sm-12">
     <div class="row-space-2">
       <div class="content row-space-2">
-        <%= image_tag post.picture.url if post.picture? %>
+        <% if post.picture? %>
+          <%= link_to(post.link, target: "_blank") do %>
+            <%= image_tag post.picture %>
+          <% end %>
+        <% end %>
         <%= link_to(post.link, target: "_blank") do %>
           <h3 class="title"><%= post.title %></h3>
           <span class="price">$<%= post.price %><sup><%= post.currency %></sup></span>

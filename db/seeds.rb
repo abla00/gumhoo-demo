@@ -34,7 +34,16 @@ users = User.order(:created_at).take(6)
   content = Faker::Lorem.sentence(5)
   price =   Faker::Commerce.price
   link =    Faker::Internet.url('24h.pchome.com.tw')
-  users.each { |user| user.posts.create!(title: title, content: content, price: price, link: link) }
+  picture = Faker::Avatar.image(title.parameterize, "300x300", "jpg")
+  users.each do |user|
+    user.posts.create!(
+      title:   title, 
+      content: content, 
+      price:   price, 
+      link:    link,
+      picture: picture
+    )
+  end
   puts "Post ##{n+1} created."
 end
 puts "Creating Posts completed."
