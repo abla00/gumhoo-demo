@@ -1,37 +1,38 @@
-<li id="post-<%= post.id %>" class="row">
-  <div class="col-md-2 col-sm-12">
-    <div class="avatar-wrapper">
-      <%= link_to(post.user, class: "text-muted") do %>
-        <div class="media-photo row-space-1">
-          <%= gravatar_for(post.user, size: 68) %>
-        </div>
-        <div class="text-center profile-name text-wrap">
-          <%= post.user.first_name %>
-        </div>
+<div id="post-<%= post.id %>" class="grid-item grid-sizer">
+  <div class="text-center">
+    <%= link_to(post.link, target: "_blank") do %>
+      <%= image_tag post.picture, class: "post-image" %>
+    <% end %>
+    <div class="grid-item-price">
+      $<%= post.price %><sup><%= post.currency %></sup>
+    </div>
+  </div>
+  <div class="grid-item-title">
+    <%= link_to(post.link, target: "_blank") do %>
+      <h3 class="title"><%= post.title %></h3>
+    <% end %>
+    <div class="text-muted date hide-sm">
+      Posted <%= time_ago_in_words(post.created_at) %> ago.
+      <% if current_user?(post.user) %>
+        <%= link_to "delete", post, method: :delete,
+                                    data: { confirm: "You sure?" } %>
       <% end %>
     </div>
   </div>
-  <div class="col-md-10 col-sm-12">
-    <div class="row-space-2">
-      <div class="content row-space-2">
-        <% if post.picture? %>
-          <%= link_to(post.link, target: "_blank") do %>
-            <%= image_tag post.picture %>
-          <% end %>
+  <div class="grid-item-profile">
+    <div class="media">
+      <div class="media-left">
+        <%= link_to(post.user, target: "_blank") do %>
+          <%= gravatar_for(post.user, size: 30) %>
         <% end %>
-        <%= link_to(post.link, target: "_blank") do %>
-          <h3 class="title"><%= post.title %></h3>
-          <span class="price">$<%= post.price %><sup><%= post.currency %></sup></span>
-        <% end %>
-        <p><%= post.content %></p>
       </div>
-      <div class="text-muted date hide-sm pull-left">
-        Posted <%= time_ago_in_words(post.created_at) %> ago.
-        <% if current_user?(post.user) %>
-          <%= link_to "delete", post, method: :delete,
-                                      data: { confirm: "You sure?" } %>
+      <div class="media-body">
+        <%= link_to(post.user, class: "text-muted", target: "_blank") do %>
+          <h4 class="media-heading">
+            <%= post.user.name %>
+          </h4>
         <% end %>
       </div>
     </div>
   </div>
-</li>
+</div>

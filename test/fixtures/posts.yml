@@ -30,7 +30,9 @@ most_recent:
   
 <% 30.times do |n| %>
 micropost_<%= n %>:
+  title: "Code Complete"
   content: <%= Faker::Lorem.sentence(5) %>
+  price: <%= Faker::Commerce.price %>
   created_at: <%= 42.days.ago %>
   user: abla
 <% end %>

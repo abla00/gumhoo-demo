@@ -9,4 +9,8 @@ module ApplicationHelper
       page_title + " | " + base_title
     end
   end
+  
+  def hide_spinner(param)
+    param.blank? ? 'hide' : ''
+  end
 end
