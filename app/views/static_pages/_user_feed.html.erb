@@ -1,17 +1,11 @@
+<% provide(:hide, 'show') %>
 <div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <%= render 'shared/user_info' %>
-    </section>
-    <section class="stats">
-      <%= render 'shared/stats' %>
-    </section>
-    <section class="find_post">
-      <%= render 'posts/find_post' %>
-    </section>
-  </aside>
-  <div class="col-md-6">
-    <h3>Micropost Feed</h3>
+  <div class="col-sm-12">
+    <%= render 'posts/find_post' %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
     <%= render 'shared/feed' %>
   </div>
 </div>

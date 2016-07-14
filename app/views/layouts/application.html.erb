@@ -22,5 +22,17 @@
       <%= render 'layouts/footer' %>
       <%= debug(params) if Rails.env.development? %>
     </div>
+    <div id="spinner" class="<%= hide_spinner(yield(:hide)) %>">
+      <div class="spinner-mask">
+        <%= yield(:hide) %>
+      </div>
+      <div class="spinner-container">
+        <div class="spinner">
+          <div class="bounce1"></div>
+          <div class="bounce2"></div>
+          <div class="bounce3"></div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

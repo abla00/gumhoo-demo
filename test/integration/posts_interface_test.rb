@@ -37,7 +37,7 @@ class PostsInterfaceTest < ActionDispatch::IntegrationTest
     assert foo.picture?
     assert_redirected_to root_url
     follow_redirect!
-    assert_match content, response.body
+    assert_match title, response.body
     # Delete a post.
     assert_select 'a', text: 'delete'
     first_post = @user.posts.paginate(page: 1).first
@@ -51,15 +51,15 @@ class PostsInterfaceTest < ActionDispatch::IntegrationTest
   
   test "post sidebar count" do
     log_in_as(@user)
-    get root_path
+    get following_user_path(@user)
     assert_match "#{@user.posts.count} posts", response.body
     # User with zero posts
     other_user = users(:malory)
     log_in_as(other_user)
-    get root_path
-    assert_match "0 posts", response.body
+    get following_user_path(other_user)
+    assert_match "0 post", response.body
     other_user.posts.create!(title: "test", content: "A micropost", price:5)
-    get root_path
+    get following_user_path(other_user)
     assert_match "1 post", response.body
   end
 end

@@ -25,7 +25,7 @@ module PostsHelper
   private
   
     def meta_content(doc, property)
-      return nil if doc.nil?
-      return (doc.css("meta[property='#{property}']").present?) ? doc.css("meta[property='#{property}']").attr("content") : nil
+      node = doc.css("meta[property='#{property}']")
+      node.attr("content") if node.present?
     end
 end
