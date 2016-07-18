@@ -28,7 +28,8 @@
 
 .jumbotron-home {
   background-image: asset-data-url("home-hero.jpg");
-  background-position: left bottom;
+  background-size: cover;
+  background-position: 0% 80%;
   border-radius: 0 !important;
   &:after {
     background-color: rgba(0, 0, 0, 0.25);
