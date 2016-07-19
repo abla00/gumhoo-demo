@@ -1,6 +1,6 @@
 <div id="post-<%= post.id %>" class="grid-item grid-sizer">
   <div class="text-center">
-    <%= link_to(post.link, target: "_blank") do %>
+    <%= link_to(post, target: "_blank") do %>
       <%= image_tag post.picture, class: "post-image" %>
     <% end %>
     <div class="grid-item-price">
@@ -8,7 +8,7 @@
     </div>
   </div>
   <div class="grid-item-title">
-    <%= link_to(post.link, target: "_blank") do %>
+    <%= link_to(post, target: "_blank") do %>
       <h3 class="title"><%= post.title %></h3>
     <% end %>
     <div class="text-muted date hide-sm">

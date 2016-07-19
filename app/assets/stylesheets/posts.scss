@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-/* posts */
+/* posts masonry */
 
 .grid-sizer,
 .grid-item { 
@@ -62,5 +62,18 @@
       font-size: 13px;
       font-weight: normal;
     }
+  }
+}
+
+/* posts show */
+
+.post-title {
+  &:hover {
+    text-decoration: none;
+  }
+  h3 {
+    color: #484848;
+    font-size: 2rem;
+    font-weight: bold;
   }
 }
