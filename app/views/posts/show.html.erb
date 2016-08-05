@@ -5,6 +5,7 @@
     <% end %>
   </div>
   <div class="col-sm-6">
+    <%= render 'like_form' if logged_in? %>
     <%= link_to(@post.link, target: "_blank", class: "post-title") do %>
       <h3><%= @post.title %></h3>
     <% end %>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: abla
+  post: orange
+
+two:
+  user: abla
+  post: tau_manifesto
+
+three:
+  user: lana
+  post: orange
+
+four:
+  user: lana
+  post: cat_video
