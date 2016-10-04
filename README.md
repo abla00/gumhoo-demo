@@ -28,7 +28,7 @@ $ bundle exec rake db:seed
 ```
 $ rails server
 ```
-5. Browse to [http://localhost:8000](http://localhost:8000).
+5. Browse to [http://localhost:3000](http://localhost:3000).
 
 ## How to run the test suite
 ```
