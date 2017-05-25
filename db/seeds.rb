@@ -6,15 +6,15 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create!(name:  "Example User",
-             email: "example@railstutorial.org",
+User.create!(name:  "abla",
+             email: "abla00@gmail.com",
              password:              "foobar",
              password_confirmation: "foobar",
              admin:     true,
              activated: true,
              activated_at: Time.zone.now)
 
-99.times do |n|
+5.times do |n|
   name     = Faker::Name.name
   email    = "example-#{n+1}@railstutorial.org"
   password = "password"
@@ -28,24 +28,22 @@ User.create!(name:  "Example User",
 end
 puts "Creating Users completed."
 
-users = User.order(:created_at).take(6)
-25.times do |n|
-  users.each do |user|
-    title   = Faker::Book.title
-    content = Faker::Lorem.sentence(5)
-    price   = Faker::Commerce.price
-    link    = Faker::Internet.url('24h.pchome.com.tw')
-    random  = rand(1..3)
-    picture = Faker::Avatar.image(title.parameterize, "300x300", "jpg", "set#{random}", "bg#{random}")
-    
-    user.posts.create!(
-      title:   title, 
-      content: content, 
-      price:   price, 
-      link:    link,
-      picture: picture
-    )
-  end
+user = User.first
+14.times do |n|
+  title   = Faker::Book.title
+  content = Faker::Lorem.sentence(5)
+  price   = Faker::Commerce.price
+  link    = Faker::Internet.url('24h.pchome.com.tw')
+  random  = rand(1..3)
+  picture = Faker::Avatar.image(title.parameterize, "300x300", "jpg", "set#{random}", "bg#{random}")
+  
+  user.posts.create!(
+    title:   title, 
+    content: content, 
+    price:   price, 
+    link:    link,
+    picture: picture
+  )
   puts "Post ##{n+1} created."
 end
 puts "Creating Posts completed."
@@ -53,8 +51,8 @@ puts "Creating Posts completed."
 # Following relationships
 users     = User.all
 user      = users.first
-following = users[2..50]
-followers = users[3..40]
+following = users[2..4]
+followers = users[3..5]
 following.each { |followed| user.follow(followed) }
 puts "Following relationships completed."
 followers.each { |follower| follower.follow(user) }
