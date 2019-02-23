@@ -4,6 +4,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @comment = Comment.new(post: @post)
   end
   
   def create
@@ -12,7 +13,18 @@ class PostsController < ApplicationController
       flash[:success] = "Post created!"
       redirect_to root_url
     else
-      @doc = Nokogiri::HTML(open(params[:post][:link]))
+      tries = 3
+      url = params[:post][:link]
+      uri = URI.parse(url)
+      
+      begin
+        @doc = Nokogiri::HTML(uri.open(redirect: false))
+      rescue OpenURI::HTTPRedirect => redirect
+        uri = redirect.uri
+        retry if (tries -= 1) > 0
+        raise
+      end
+      
       render 'posts/find'
     end
   end
